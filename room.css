@@ -1,0 +1,242 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* 🌊 MOVING BACKGROUND */
+body {
+  min-height: 100vh;
+  color: white;
+
+  background: linear-gradient(
+    -45deg,
+    #0f2027,
+    #203a43,
+    #2c5364,
+    #1c92d2
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* HEADER */
+header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.45);
+  animation: slideDown 1s ease;
+}
+
+header h1 {
+  font-size: 26px;
+  text-shadow: 2px 2px 6px black;
+}
+
+/* NAV */
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background: orange;
+  transition: width 0.3s;
+}
+
+
+nav a:hover {
+  color: orange;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* CONTAINER */
+.container {
+  text-align: center;
+  margin: 40px auto;
+  
+}
+
+.container h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  animation: glow 2s infinite alternate;
+}
+
+/* BOOK BUTTON */
+.tn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: orange;
+  color: black;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(255,165,0,0.6);
+}
+
+/* ROOM GALLERY */
+.pg-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 30px 60px;
+}
+
+/* ROOM CARD */
+.pg-card {
+  position: relative;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  animation: fadeUp 1.5s ease;
+}
+
+/* IMAGE */
+.pg-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.pg-card:hover img {
+  transform: scale(1.1);
+}
+
+/* OVERLAY */
+.pg-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.pg-overlay h4 {
+  margin: 0;
+  font-size: 18px;
+  text-shadow: 2px 2px 6px black;
+}
+
+.pg-overlay p {
+  margin-top: 5px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* 🌊 ANIMATIONS */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px orange;
+  }
+  to {
+    text-shadow: 0 0 25px yellow;
+  }
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 🌿 BLURRED BACKGROUND IMAGE */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("BACKGROUND.jpg"); /* your image */
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(8px);
+  transform: scale(1.1); /* prevent white edges */
+  z-index: -2;
+}
+
+/* 🌊 COLOR OVERLAY + ANIMATION */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    -45deg,
+    rgba(15, 32, 39, 0.7),
+    rgba(32, 58, 67, 0.7),
+    rgba(44, 83, 100, 0.7),
+    rgba(28, 146, 210, 0.7)
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+
+  z-index: -1;
+}

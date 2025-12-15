@@ -1,0 +1,239 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 🌿 BLURRED BACKGROUND IMAGE */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("BACKGROUND.jpg"); /* your image */
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(8px);
+  transform: scale(1.1); /* prevent white edges */
+  z-index: -2;
+}
+
+/* 🌊 COLOR OVERLAY + ANIMATION */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    -45deg,
+    rgba(15, 32, 39, 0.7),
+    rgba(32, 58, 67, 0.7),
+    rgba(44, 83, 100, 0.7),
+    rgba(34, 71, 90, 0.7)
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+
+  z-index: -1;
+}
+/* HEADER */
+header {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideDown 1s ease;
+}
+
+
+header h1 {
+  color: #fff;
+  text-shadow: 2px 2px 5px black;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: orange;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* CONTAINER BOX */
+.container {
+  width: 40%;
+  margin: 40px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  animation: fadeUp 1.2s ease;
+  text-align: center; 
+  flex: auto;
+}
+/* 💰 PRICE STYLE */
+.price {
+  margin: 12px 0 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffcc00;
+  animation: pricePop 1.2s ease;
+}
+
+/* Price animation */
+@keyframes pricePop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.container h2 {
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 5px black;
+
+}.pagination .prev {
+    display: inline-block;
+    padding: 12px 25px;
+     background-color: orange;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-right: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pagination .prev:hover {
+    transform: translateY(-3px) scale(1.05);
+     box-shadow: 0 8px 15px rgba(255,165,0,0.6);
+}
+/* Pagination Next Button */
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination .next {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: orange;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pagination .next:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 15px rgba(255,165,0,0.6);
+}
+
+
+.tn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: orange;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  
+}
+
+.tn:hover {
+  background: #ffb300;
+}
+
+.pg-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  width: 85%;
+  margin: 30px auto;
+  animation: fadeUp 1.4s ease;
+}
+
+.pg-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pg-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.pg-card p {
+  padding: 12px;
+  font-weight: bold;
+}
+.pg-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
